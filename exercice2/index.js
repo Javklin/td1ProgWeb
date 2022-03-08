@@ -48,21 +48,49 @@ function nombreVoyellesRegex(mot) {
 
 nombreVoyellesRegex("Franklin");
 
-function plusPetitTableau(tab) {
-  return Math.min(tab);
-}
-function plusGrandTableau(tab) {
-  return Math.max(tab);
+function plusPetitEtGrandTableau(tab) {
+  mini = Math.min.apply(Math, tab);
+  maxi = Math.max.apply(Math, tab);
+  console.log(
+    "Le plus petit élément du tableau est " +
+      mini +
+      " Le plus grand élément du tableau est " +
+      maxi
+  );
 }
 
 function moyenneTableau(tab) {
   var compteur = 0;
   for (var i = 0; i < tab.length; i++) {
-    compteur += tab[i];
+    compteur += parseInt(tab[i], 10);
   }
+  console.log("la moyenne du tableau est " + compteur / tab.length);
   return compteur / tab.length;
 }
 
-function checkPinCode(tab) {}
+function checkPinCode(code) {
+  var nbChiffre = parseInt(Math.floor(Math.log10(Math.abs(code))) + 1);
+  console.log(nbChiffre);
+  if (nbChiffre == 4 || nbChiffre == 6) {
+    console.log("Ce code est valide");
+  } else {
+    console.log("Ce code n'est pas valide");
+  }
+}
 
-function toLowerThanToUpper(tab) {}
+function toLowerThanToUpper(chaine) {
+  console.log(
+    "La chaine en minuscul est " +
+      chaine.toLowerCase() +
+      " La chaine en majuscul est " +
+      chaine.toUpperCase()
+  );
+}
+
+var monTab = ["1", "1", "100", "5"];
+plusPetitEtGrandTableau(monTab);
+moyenneTableau(monTab);
+var codeTest = 412230;
+checkPinCode(codeTest);
+var chaineTest = "Ma chaine test";
+toLowerThanToUpper(chaineTest);
